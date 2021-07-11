@@ -14,7 +14,7 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
 
 
         # run the youtube_chapters_demo example...
-        
+        os.system("python3 ../src/youtube_chapters_demo.py %s" % youtube_url)
 
 
         # Tests

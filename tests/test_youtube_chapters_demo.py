@@ -9,8 +9,9 @@ import unittest
 class YoutubeChaptersDemoTests(unittest.TestCase):
 
     def test_download_youtube_files(self):
-        youtube_url = "RBSGKlAvoiM"
+        youtube_url = "NtevTo96Wjc"
         video_file = youtube_url + ".mp4"
+        description_file = youtube_url + ".description"
 
 
         # run the youtube_chapters_demo example...
@@ -24,6 +25,7 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
 
 
         # Test 2: Verify that a txt file is created on disk.
+        self.assertTrue(os.path.isfile(description_file), "No description file found")
 
 
 

@@ -18,7 +18,6 @@ print("youtube url: ", youtubeURL)
 
 
 ydl_opts = {
-    'format': 'bestaudio/best',
     'outtmpl': 'tmp/%(id)s.mp4',
     'noplaylist': True,
     'quiet': True,

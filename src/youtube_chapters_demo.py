@@ -13,40 +13,40 @@ videoFileName = youtubeURL + ".mp4"
 
 print("youtube url: ", youtubeURL)
 
-#os.system("youtube-dl --restrict-filenames --write-description -o '%s' %s" % (videoFileName, youtubeURL))
-
-
 
 ydl_opts = {
     'outtmpl': 'tmp/%(id)s.mp4',
     'noplaylist': True,
     'quiet': True,
-    'forceduration':True
+    'writedescription' : True
 }
 
+# Download the youtube video and description onto local computer 
 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     dictMeta = ydl.extract_info(
         "https://www.youtube.com/watch?v={sID}".format(sID=youtubeURL),
         download=True)
-
-
-
+    
 
 
 
 
 # Steps for importing the video into OTIO
 # 1. Create a TimeLine object
-# timeline = otio.schema.TimeLine()
-# timeline.name = "Youtube Demo"
+timeline = otio.schema.Timeline()
+timeline.name = "Youtube Demo"
 
 # # 2. Create a Track on the timeline 
-# track = otio.schema.Track()
-# track.name = "Videos"
-# timeline.tracks.append(track)
+track = otio.schema.Track()
+track.name = "Videos"
+timeline.tracks.append(track)
 
 # 3. Find out how long the youtube video is
-#available_range = otio.opentime.TimeRange(?,?)
+totalFrames = dictMeta['duration'] * dictMeta['fps']
+available_range = otio.opentime.TimeRange(
+    otio.opentime.RationalTime(0, dictMeta['fps']),
+    otio.opentime.RationalTime(totalFrames, dictMeta['fps'])
+)
 
 
 # 4. Create a media_referene (contians the file path of the youtube video)

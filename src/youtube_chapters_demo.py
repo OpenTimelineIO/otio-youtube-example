@@ -49,7 +49,23 @@ available_range = otio.opentime.TimeRange(
 )
 
 
-# 4. Create a media_referene (contians the file path of the youtube video)
+# 4. Create a media_reference (contians the file path of the youtube video)
+
+media_reference = otio.schema.ExternalReference(
+        target_url="tmp/" + videoFileName,
+        available_range=available_range
+    )
+
 # 5. Create a Clip and set the media_reference (based on what we found in step 4) 
+clip = otio.schema.Clip(name="Youtube clip")
+clip.media_reference = media_reference
+
+
 # 6. Append the Clip to the Track
+track.append(clip)
+
+
+print(timeline)
+
+
 

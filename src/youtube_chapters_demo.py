@@ -11,8 +11,6 @@ youtubeURL = sys.argv[1]
 
 videoFileName = youtubeURL + ".mp4"
 
-print("youtube url: ", youtubeURL)
-
 
 ydl_opts = {
     'outtmpl': 'tmp/%(id)s.mp4',
@@ -43,6 +41,8 @@ timeline.tracks.append(track)
 
 # 3. Find out how long the youtube video is
 totalFrames = dictMeta['duration'] * dictMeta['fps']
+
+
 available_range = otio.opentime.TimeRange(
     otio.opentime.RationalTime(0, dictMeta['fps']),
     otio.opentime.RationalTime(totalFrames, dictMeta['fps'])
@@ -65,7 +65,15 @@ clip.media_reference = media_reference
 track.append(clip)
 
 
-print(timeline)
+#save the timeline as .otio file 
 
 
 
+otio_filename = youtubeURL + ".otio"
+otio.adapters.write_to_file(timeline, otio_filename)
+print(
+    "SAVED: {0} with {1} clips.".format(
+        otio_filename,
+        len(timeline.tracks[0])
+    )
+)

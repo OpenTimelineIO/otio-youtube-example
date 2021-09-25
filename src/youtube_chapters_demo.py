@@ -3,9 +3,30 @@
 import os
 import sys
 import youtube_dl
+import re
 
 import opentimelineio as otio
 
+
+# Input: @description_file contains the Youtube description
+# Function should parse the Youtube description to find any table-of-contents entries. 
+# The table-of-contents entries will contain a timestamp paired with a chapter title. 
+# For example: (00:12:15) Thor fights Thanos
+# 
+# The function should return an array of all such timestamps and chapter titles. 
+#
+def process_youtube_description(description_file): 
+  with open(description_file) as f:
+    lines = f.readlines()
+
+  p = re.compile('\d{1}:\d{2}:\d{2}')
+ 
+
+  for line in lines: 
+      print(line)
+      print(p.findall(line))  
+
+  
 
 youtubeURL = sys.argv[1]
 
@@ -34,7 +55,7 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
 timeline = otio.schema.Timeline()
 timeline.name = "Youtube Demo"
 
-# # 2. Create a Track on the timeline 
+# 2. Create a Track on the timeline 
 track = otio.schema.Track()
 track.name = "Videos"
 timeline.tracks.append(track)
@@ -65,9 +86,13 @@ clip.media_reference = media_reference
 track.append(clip)
 
 
+
+# 7. Process the youtube description and insert Markers into the timeline
+description_file = "tmp/" + youtubeURL + ".description"
+process_youtube_description(description_file)
+
+
 #save the timeline as .otio file 
-
-
 
 otio_filename = youtubeURL + ".otio"
 otio.adapters.write_to_file(timeline, otio_filename)
@@ -77,3 +102,5 @@ print(
         len(timeline.tracks[0])
     )
 )
+
+

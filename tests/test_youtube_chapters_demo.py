@@ -4,14 +4,15 @@
 import os
 import sys
 import unittest
+import opentimelineio as otio
 
 
 class YoutubeChaptersDemoTests(unittest.TestCase):
 
     def test_download_youtube_files(self):
         youtube_url = "NtevTo96Wjc"
-        video_file = youtube_url + ".mp4"
-        description_file = youtube_url + ".description"
+        video_file = "tmp/" + youtube_url + ".mp4"
+        description_file = "tmp/" + youtube_url + ".description"
 
 
         # run the youtube_chapters_demo example...
@@ -27,6 +28,19 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
         # Test 2: Verify that a txt file is created on disk.
         self.assertTrue(os.path.isfile(description_file), "No description file found")
 
+
+        
+        # Test 3: Verify that an otio file is created 
+        otio_file = youtube_url + ".otio"
+        self.assertTrue(os.path.isfile(otio_file), "No otio file found")
+
+        # Test 4: Verify that the clip has the correct media_reference.
+        timeline = otio.adapters.read_from_file(otio_file)
+
+        track = timeline.tracks[0] #track contains clips (array)
+        clip = track[0] 
+
+        self.assertEqual(clip.media_reference.target_url, video_file, "Clip has incorrect media_reference: {media_reference}".format(media_reference=clip.media_reference.target_url))
 
 
 if __name__ == '__main__':

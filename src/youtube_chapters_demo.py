@@ -19,18 +19,23 @@ def process_youtube_description(description_file):
   with open(description_file) as f:
     lines = f.readlines()
 
-  p = re.compile('\d{1}:\d{2}:\d{2}')
+  # Should match the following timestamp patterns: 
+  # 01:34:21 chapter title
+  # 1:34:21 chapter title
+  # 34:21 chapter title
+  # 4:21 chapter title
+  pattern = re.compile('((?:\d+:)+\d{2})\s(.+)')
  
 
   for line in lines: 
       print(line)
-      print(p.findall(line))  
+      print(pattern.findall(line))  
 
-  
 
 youtubeURL = sys.argv[1]
 
 videoFileName = youtubeURL + ".mp4"
+
 
 
 ydl_opts = {
@@ -102,5 +107,6 @@ print(
         len(timeline.tracks[0])
     )
 )
+
 
 

@@ -5,6 +5,12 @@
 
 This project serves as a working example to illustrate the key features of the OpenTimelineIO project (owned by Pixar).  The example will take in a youtube url as input.  The example will then download the youtube video and description onto the user's local computer and import the data into an OTIO Timeline.  The example will extract the "table of contents" data from the youtube description and import this information as "Markers" on the Timeline.  The final timeline is exported as a .otio file. 
 
+## Pre-Requisites
+
+* Install the OpenTimelineIo python library based on these [instructions](https://opentimelineio.readthedocs.io/en/latest/tutorials/quickstart.html)
+* A valid C/C++ compiler
+* For MacOS if you run into a 'SSL: CERTIFICATE_VERIFY_FAILED' error then follow these [instructions](https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org)
+
 ## Installation
 
 sudo pip3 install youtube-dl

@@ -4,6 +4,7 @@ import os
 import sys
 import youtube_dl
 import re
+import datetime
 
 import opentimelineio as otio
 
@@ -25,11 +26,31 @@ def process_youtube_description(description_file):
   # 34:21 chapter title
   # 4:21 chapter title
   pattern = re.compile('((?:\d+:)+\d{2})\s(.+)')
- 
+  chapters = []
 
   for line in lines: 
-      print(line)
-      print(pattern.findall(line))  
+      matches = pattern.findall(line) 
+      if len(matches) > 0: 
+          chapters.append(matches[0])
+   
+  return chapters
+         
+
+
+def convert_time_stamp_to_seconds(time_stamp):
+    if len(time_stamp) > 5:
+        date_time = datetime.datetime.strptime(time_stamp, "%H:%M:%S")
+    else:
+        date_time = datetime.datetime.strptime(time_stamp, "%M:%S")
+    
+    a_timedelta = date_time - datetime.datetime(1900, 1, 1)
+    seconds = a_timedelta.total_seconds()
+    return seconds 
+
+
+def create_markers(chapters):
+    for chapter in chapters: 
+        print(convert_time_stamp_to_seconds(chapter[0]))
 
 
 youtubeURL = sys.argv[1]
@@ -94,7 +115,10 @@ track.append(clip)
 
 # 7. Process the youtube description and insert Markers into the timeline
 description_file = "tmp/" + youtubeURL + ".description"
-process_youtube_description(description_file)
+chapters = process_youtube_description(description_file)
+create_markers(chapters)
+
+
 
 
 #save the timeline as .otio file 

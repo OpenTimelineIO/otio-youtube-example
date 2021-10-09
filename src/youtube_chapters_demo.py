@@ -48,9 +48,27 @@ def convert_time_stamp_to_seconds(time_stamp):
     return seconds 
 
 
-def create_markers(chapters):
+def create_markers(chapters, fps):
+    markers = []
+
     for chapter in chapters: 
-        print(convert_time_stamp_to_seconds(chapter[0]))
+        seconds = convert_time_stamp_to_seconds(chapter[0])
+ 
+        marker = otio.schema.Marker()
+        marker.marked_range = otio.opentime.TimeRange(
+            start_time=otio.opentime.RationalTime(seconds, dictMeta['fps']),
+            duration=otio.opentime.RationalTime() #TODO: Set a specific duration
+        )
+ 
+        marker.color = otio.schema.MarkerColor.RED
+ 
+        marker.name = chapter[1]
+        markers.append(marker)
+
+    return markers
+
+
+
 
 
 youtubeURL = sys.argv[1]
@@ -115,8 +133,17 @@ track.append(clip)
 
 # 7. Process the youtube description and insert Markers into the timeline
 description_file = "tmp/" + youtubeURL + ".description"
-chapters = process_youtube_description(description_file)
-create_markers(chapters)
+chapters = process_youtube_description(description_file) 
+
+
+
+
+markers = create_markers(chapters, dictMeta['fps'])
+
+
+for marker in markers:
+    clip.markers.append(marker)
+
 
 
 

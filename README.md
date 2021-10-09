@@ -22,6 +22,7 @@ python version: 3.x
 
 ** To run the actual example: **
 
+git checkout youtube_demo
 python3 youtube_chapters_demo.py NtevTo96Wjc
 
 This should create two files on your local computer: NtevTo96Wjc.description and NtevTo96Wjc.mp4

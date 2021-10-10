@@ -22,10 +22,14 @@ def process_youtube_description(description_file):
 
   # Should match the following timestamp patterns: 
   # 01:34:21 chapter title
-  # 1:34:21 chapter title
+  # 1:34:21 chapter title 
   # 34:21 chapter title
   # 4:21 chapter title
-  pattern = re.compile('((?:\d+:)+\d{2})\s(.+)')
+  # (4:21) chapter title
+  # [4:21] chapter title
+
+
+  pattern = re.compile('((?:\d+:)+\d{2}).*\s(.+)')
   chapters = []
 
   for line in lines: 
@@ -55,8 +59,9 @@ def create_markers(chapters, fps):
         seconds = convert_time_stamp_to_seconds(chapter[0])
  
         marker = otio.schema.Marker()
+
         marker.marked_range = otio.opentime.TimeRange(
-            start_time=otio.opentime.RationalTime(seconds, dictMeta['fps']),
+            start_time=otio.opentime.RationalTime(seconds*fps, fps),
             duration=otio.opentime.RationalTime() #TODO: Set a specific duration
         )
  
@@ -64,6 +69,7 @@ def create_markers(chapters, fps):
  
         marker.name = chapter[1]
         markers.append(marker)
+
 
     return markers
 
@@ -134,9 +140,6 @@ track.append(clip)
 # 7. Process the youtube description and insert Markers into the timeline
 description_file = "tmp/" + youtubeURL + ".description"
 chapters = process_youtube_description(description_file) 
-
-
-
 
 markers = create_markers(chapters, dictMeta['fps'])
 

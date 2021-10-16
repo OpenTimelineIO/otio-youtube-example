@@ -10,7 +10,7 @@ import opentimelineio as otio
 class YoutubeChaptersDemoTests(unittest.TestCase):
 
     def test_download_youtube_files(self):
-        youtube_url = "NtevTo96Wjc"
+        youtube_url = "pvkTC2xIbeY"
         video_file = "tmp/" + youtube_url + ".mp4"
         description_file = "tmp/" + youtube_url + ".description"
 
@@ -42,6 +42,8 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
 
         self.assertEqual(clip.media_reference.target_url, video_file, "Clip has incorrect media_reference: {media_reference}".format(media_reference=clip.media_reference.target_url))
 
+        markers = clip.markers
+        self.assertEqual(len(markers), 7, "Timeline object has incorrect number of markers: {num_markers}".format(num_markers=len(markers)))
 
 if __name__ == '__main__':
     unittest.main()

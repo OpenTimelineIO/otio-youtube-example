@@ -94,7 +94,7 @@ ydl_opts = {
 with youtube_dl.YoutubeDL(ydl_opts) as ydl:
     dictMeta = ydl.extract_info(
         "https://www.youtube.com/watch?v={sID}".format(sID=youtubeURL),
-        download=True)
+        download=False)
     
 
 

@@ -11,8 +11,8 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
 
     def test_download_youtube_files(self):
         youtube_url = "pvkTC2xIbeY"
-        video_file = "tmp/" + youtube_url + ".mp4"
-        description_file = "tmp/" + youtube_url + ".description"
+        video_file = "tmp/{url}/.mp4".format(url=youtube_url)
+        description_file = "tmp/{url}.description".format(youtube_url)
 
 
         # run the youtube_chapters_demo example...

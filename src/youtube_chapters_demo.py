@@ -29,7 +29,7 @@ def process_youtube_description(description_file):
   # [4:21] chapter title
 
 
-  pattern = re.compile('((?:\d+:)+\d{2}).*\s(.+)')
+  pattern = re.compile('((?:\d+:)+\d{2})[\),\]]*\s(.+)')
   chapters = []
 
   for line in lines: 
@@ -62,7 +62,7 @@ def create_markers(chapters, fps):
 
         marker.marked_range = otio.opentime.TimeRange(
             start_time=otio.opentime.RationalTime(seconds*fps, fps),
-            duration=otio.opentime.RationalTime() #TODO: Set a specific duration
+            duration=otio.opentime.RationalTime(0, fps) # We are setting the duration of each marker to be 0 frames. 
         )
  
         marker.color = otio.schema.MarkerColor.RED
@@ -163,11 +163,9 @@ def create_timeline(dictMeta, video_file_name):
 youtubeURL = sys.argv[1]
 video_file_name = youtubeURL + ".mp4"
 
-dictMeta = download_from_youtube(youtubeURL)
+dictMeta = download_from_youtube(youtubeURL)  
 
-create_timeline(dictMeta, video_file_name)
-
-
+create_timeline(dictMeta, video_file_name)    
 
 
 

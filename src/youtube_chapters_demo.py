@@ -79,7 +79,7 @@ def create_markers(chapters, fps):
 
 def download_from_youtube(youtubeURL): 
     ydl_opts = {
-        'outtmpl': 'tmp/%(id)s.mp4',
+        'outtmpl': os.path.join('tmp', '%(id)s.mp4'),
         'noplaylist': True,
         'quiet': True,
         'writedescription' : True
@@ -119,7 +119,7 @@ def create_timeline(dictMeta, video_file_name):
     # 4. Create a media_reference (contians the file path of the youtube video)
 
     media_reference = otio.schema.ExternalReference(
-            target_url="tmp/" + video_file_name,
+            target_url=os.path.join('tmp', video_file_name),
             available_range=available_range
         )
 
@@ -134,7 +134,7 @@ def create_timeline(dictMeta, video_file_name):
 
 
     # 7. Process the youtube description and insert Markers into the timeline
-    description_file = "tmp/" + youtubeURL + ".description"
+    description_file = os.path.join('tmp', youtubeURL + '.description')
     chapters = process_youtube_description(description_file) 
 
     markers = create_markers(chapters, dictMeta['fps'])

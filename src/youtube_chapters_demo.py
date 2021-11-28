@@ -34,7 +34,7 @@ def process_youtube_description(description_file):
 
   for line in lines: 
       matches = pattern.findall(line) 
-      if len(matches) > 0: 
+      if matches: 
           chapters.append(matches[0])
    
   return chapters

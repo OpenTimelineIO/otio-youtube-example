@@ -77,12 +77,13 @@ def create_markers(chapters, fps):
 
 
 
-def download_from_youtube(youtubeURL): 
+def download_from_youtube(youtubeURL, skip_video_download): 
     ydl_opts = {
         'outtmpl': os.path.join('tmp', '%(id)s.mp4'),
         'noplaylist': True,
         'quiet': True,
-        'writedescription' : True
+        'writedescription' : True, 
+        'skip_download': skip_video_download
     }
 
     # Download the youtube video and description onto local computer 
@@ -144,8 +145,6 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
 
 
 
-
-
     #save the timeline as .otio file 
     otio.adapters.write_to_file(timeline, otio_file)
     print(
@@ -166,11 +165,15 @@ def main():
    # argparse module here, so you get --help and other affordances
    youtubeURL = sys.argv[1]
 
+
    video_file = youtubeURL + ".mp4"
    description_file = os.path.join('tmp', youtubeURL + '.description')
    otio_file = youtubeURL + ".otio"
+   skip_video_download = False # set this true if you wish to skip the video download step
 
-   dictMeta = download_from_youtube(youtubeURL)  
+
+   
+   dictMeta = download_from_youtube(youtubeURL, skip_video_download)  
    create_timeline(dictMeta, video_file, description_file, otio_file)  
 
 if __name__ == "__main__":

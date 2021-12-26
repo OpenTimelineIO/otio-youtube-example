@@ -95,7 +95,7 @@ def download_from_youtube(youtubeURL):
     
 
 
-def create_timeline(dictMeta, video_file_name): 
+def create_timeline(dictMeta, video_file, description_file, otio_file): 
     # Steps for importing the video into OTIO
     # 1. Create a TimeLine object
     timeline = otio.schema.Timeline()
@@ -119,7 +119,7 @@ def create_timeline(dictMeta, video_file_name):
     # 4. Create a media_reference (contians the file path of the youtube video)
 
     media_reference = otio.schema.ExternalReference(
-            target_url=os.path.join('tmp', video_file_name),
+            target_url=os.path.join('tmp', video_file),
             available_range=available_range
         )
 
@@ -134,7 +134,6 @@ def create_timeline(dictMeta, video_file_name):
 
 
     # 7. Process the youtube description and insert Markers into the timeline
-    description_file = os.path.join('tmp', youtubeURL + '.description')
     chapters = process_youtube_description(description_file) 
 
     markers = create_markers(chapters, dictMeta['fps'])
@@ -148,25 +147,34 @@ def create_timeline(dictMeta, video_file_name):
 
 
     #save the timeline as .otio file 
-
-    otio_filename = youtubeURL + ".otio"
-    otio.adapters.write_to_file(timeline, otio_filename)
+    otio.adapters.write_to_file(timeline, otio_file)
     print(
         "SAVED: {0} with {1} clips.".format(
-            otio_filename,
+            otio_file,
             len(timeline.tracks[0])
         )
     )
 
 
 
-youtubeURL = sys.argv[1]
-video_file_name = youtubeURL + ".mp4"
 
-dictMeta = download_from_youtube(youtubeURL)  
 
-create_timeline(dictMeta, video_file_name)    
+  
 
+def main():
+   # I'd also recommend building a simple argument parser using the
+   # argparse module here, so you get --help and other affordances
+   youtubeURL = sys.argv[1]
+
+   video_file = youtubeURL + ".mp4"
+   description_file = os.path.join('tmp', youtubeURL + '.description')
+   otio_file = youtubeURL + ".otio"
+
+   dictMeta = download_from_youtube(youtubeURL)  
+   create_timeline(dictMeta, video_file, description_file, otio_file)  
+
+if __name__ == "__main__":
+   main()
 
 
 

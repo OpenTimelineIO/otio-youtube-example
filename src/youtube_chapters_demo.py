@@ -5,6 +5,7 @@ import sys
 import youtube_dl
 import re
 import datetime
+import argparse 
 
 import opentimelineio as otio
 
@@ -161,20 +162,22 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
   
 
 def main():
-   # I'd also recommend building a simple argument parser using the
-   # argparse module here, so you get --help and other affordances
-   youtubeURL = sys.argv[1]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("youtubeVideoID", help="The ID of the youtube video you would like to download.  For example, in the following URL (https://www.youtube.com/watch?v=es6LBWB_I4E), the ID is es6LBWB_I4E.")
+    parser.add_argument("--skip-video-download", help="Do not download the youtube video", action="store_true" )
 
 
-   video_file = youtubeURL + ".mp4"
-   description_file = os.path.join('tmp', youtubeURL + '.description')
-   otio_file = youtubeURL + ".otio"
-   skip_video_download = False # set this true if you wish to skip the video download step
+    args = parser.parse_args()
+    youtubeVideoID = args.youtubeVideoID
+    skip_video_download = args.skip_video_download
+
+    video_file = youtubeVideoID + ".mp4"
+    description_file = os.path.join('tmp', youtubeVideoID + '.description')
+    otio_file = youtubeVideoID + ".otio"
 
 
-   
-   dictMeta = download_from_youtube(youtubeURL, skip_video_download)  
-   create_timeline(dictMeta, video_file, description_file, otio_file)  
+    dictMeta = download_from_youtube(youtubeVideoID, skip_video_download)  
+    create_timeline(dictMeta, video_file, description_file, otio_file)  
 
 if __name__ == "__main__":
    main()

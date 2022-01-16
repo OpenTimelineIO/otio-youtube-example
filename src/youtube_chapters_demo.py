@@ -121,7 +121,7 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
     # 4. Create a media_reference (contians the file path of the youtube video)
 
     media_reference = otio.schema.ExternalReference(
-            target_url=os.path.join('tmp', video_file),
+            target_url=video_file,
             available_range=available_range
         )
 
@@ -159,7 +159,24 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
 
 
 
-  
+
+def run_demo(youtubeVideoID, skip_video_download): 
+    dictMeta = download_from_youtube(youtubeVideoID, skip_video_download) 
+
+
+    video_file = os.path.join('tmp', youtubeVideoID + '.mp4')
+    description_file = os.path.join('tmp', youtubeVideoID + '.description')
+    otio_file = youtubeVideoID + ".otio"
+
+
+    create_timeline(dictMeta, video_file, description_file, otio_file)   
+
+    return {
+        'video_file': video_file, 
+        'description_file': description_file, 
+        'otio_file': otio_file
+    }
+    
 
 def main():
     parser = argparse.ArgumentParser()
@@ -171,14 +188,10 @@ def main():
     youtubeVideoID = args.youtubeVideoID
     skip_video_download = args.skip_video_download
 
-    video_file = youtubeVideoID + ".mp4"
-    description_file = os.path.join('tmp', youtubeVideoID + '.description')
-    otio_file = youtubeVideoID + ".otio"
+    run_demo(youtubeVideoID, skip_video_download)
 
 
-    dictMeta = download_from_youtube(youtubeVideoID, skip_video_download)  
-    create_timeline(dictMeta, video_file, description_file, otio_file)  
-
+    
 if __name__ == "__main__":
    main()
 

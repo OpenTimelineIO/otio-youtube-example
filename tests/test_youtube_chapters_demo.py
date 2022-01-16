@@ -3,26 +3,33 @@
 
 import os
 import sys
+
+sys.path.append("../src/")
+
 import unittest
 import opentimelineio as otio
+import youtube_chapters_demo as demo
 
 
 class YoutubeChaptersDemoTests(unittest.TestCase):
 
     def test_download_youtube_files(self):
-        youtube_url = "pvkTC2xIbeY"
-        video_file = os.path.join('tmp', youtube_url + ".mp4" )
-        description_file = os.path.join('tmp', youtube_url + ".description")
-
+        youtubeVideoID = "pvkTC2xIbeY"
+        skip_video_download = False # If you want to speed up the test, set this to True so that the video doesn't download
 
         # run the youtube_chapters_demo example...
-        os.system("python3 ../src/youtube_chapters_demo.py %s" % youtube_url)
+        results = demo.run_demo(youtubeVideoID, skip_video_download)
+
+        video_file = results['video_file']
+        description_file = results['description_file']
+        otio_file = results['otio_file']
 
 
         # Tests
 
         # Test 1: Verify that an mp4 file is created disk. 
-        self.assertTrue(os.path.isfile(video_file), "No video file found")
+        if not skip_video_download: 
+            self.assertTrue(os.path.isfile(video_file), "No video file found")
 
 
         # Test 2: Verify that a txt file is created on disk.
@@ -31,7 +38,6 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
 
         
         # Test 3: Verify that an otio file is created 
-        otio_file = youtube_url + ".otio"
         self.assertTrue(os.path.isfile(otio_file), "No otio file found")
 
         # Test 4: Verify that the clip has the correct media_reference.
@@ -44,6 +50,7 @@ class YoutubeChaptersDemoTests(unittest.TestCase):
 
         markers = clip.markers
         self.assertEqual(len(markers), 7, "Timeline object has incorrect number of markers: {num_markers}".format(num_markers=len(markers)))
+
 
 if __name__ == '__main__':
     unittest.main()

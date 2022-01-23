@@ -10,14 +10,17 @@ import argparse
 import opentimelineio as otio
 
 
-# Input: @description_file contains the Youtube description
-# Function should parse the Youtube description to find any table-of-contents entries. 
-# The table-of-contents entries will contain a timestamp paired with a chapter title. 
-# For example: (00:12:15) Thor fights Thanos
-# 
-# The function should return an array of all such timestamps and chapter titles. 
-#
+
 def process_youtube_description(description_file): 
+r"""Function should parse the Youtube description to find any table-of-contents entries. 
+The table-of-contents entries will contain a timestamp paired with a chapter title. 
+For example: (00:12:15) Thor fights Thanos
+
+The function should return an array of all such timestamps and chapter titles.
+
+:param description_file: contains the Youtube description.
+:rtype: list
+"""
   with open(description_file) as f:
     lines = f.readlines()
 

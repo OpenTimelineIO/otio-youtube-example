@@ -121,7 +121,16 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
     )
 
     # 5. Create a Clip and set the media_reference (based on what we found in step 4)
-    clip = otio.schema.Clip(name="Youtube clip")
+    clip = otio.schema.Clip(
+        name=dictMeta["title"],
+        metadata={
+            "YouTube": {
+                "upload_date": dictMeta["upload_date"],
+                "view_count": dictMeta["view_count"],
+                "categories": dictMeta["categories"],
+            }
+        },
+    )
     clip.media_reference = media_reference
 
     # 6. Append the Clip to the Track

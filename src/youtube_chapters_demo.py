@@ -148,7 +148,7 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
 
     # save the timeline as .otio file
     otio.adapters.write_to_file(timeline, otio_file)
-    print("SAVED: {0} with {1} clips.".format(otio_file, len(timeline.tracks[0])))
+    print("SAVED: {0} with {1} markers.".format(otio_file, len(markers)))
 
 
 def run_demo(youtubeVideoID, skip_video_download):

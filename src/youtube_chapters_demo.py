@@ -117,7 +117,9 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
     # 4. Create a media_reference (contians the file path of the youtube video)
 
     media_reference = otio.schema.ExternalReference(
-        target_url=video_file, available_range=available_range
+        target_url=video_file,
+        available_range=available_range,
+        metadata={"YouTube": {"original_url": dictMeta["webpage_url"]}},
     )
 
     # 5. Create a Clip and set the media_reference (based on what we found in step 4)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 import youtube_dl
 import re
 import datetime
@@ -11,11 +10,12 @@ import opentimelineio as otio
 
 
 def process_youtube_description(description_file):
-    """Function should parse the Youtube description to find any table-of-contents entries.
-    The table-of-contents entries will contain a timestamp paired with a chapter title.
-    For example: (00:12:15) Thor fights Thanos
+    """Function should parse the Youtube description to find any table-of-
+    contents entries.The table-of-contents entries will contain a timestamp
+    paired with a chapter title. For example: (00:12:15) Thor fights Thanos
 
-    The function should return an array of all such timestamps and chapter titles.
+    The function should return an array of all such timestamps
+    and chapter titles.
 
     :param description_file: contains the Youtube description.
     :rtype: list
@@ -31,7 +31,7 @@ def process_youtube_description(description_file):
     # (4:21) chapter title
     # [4:21] chapter title
 
-    pattern = re.compile("((?:\d+:)+\d{2})[\),\]]*\s(.+)")
+    pattern = re.compile(r"((?:\d+:)+\d{2})[\),\]]*\s(.+)")
     chapters = []
 
     for line in lines:
@@ -122,7 +122,8 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
         metadata={"YouTube": {"original_url": dictMeta["webpage_url"]}},
     )
 
-    # 5. Create a Clip and set the media_reference (based on what we found in step 4)
+    # 5. Create a Clip and set the media_reference (based on what we
+    # found in step 4)
     clip = otio.schema.Clip(
         name=dictMeta["title"],
         metadata={
@@ -171,7 +172,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "youtubeVideoID",
-        help="The ID of the youtube video you would like to download.  For example, in the following URL (https://www.youtube.com/watch?v=es6LBWB_I4E), the ID is es6LBWB_I4E.",
+        help="""The ID of the youtube video you would like to download.For
+        example, in the following URL
+        (https://www.youtube.com/watch?v=es6LBWB_I4E),
+        the ID is es6LBWB_I4E.""",
     )
     parser.add_argument(
         "--skip-video-download",

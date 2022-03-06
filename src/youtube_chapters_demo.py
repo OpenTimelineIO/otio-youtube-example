@@ -144,8 +144,7 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
 
     markers = create_markers(chapters, dictMeta["fps"])
 
-    for marker in markers:
-        clip.markers.append(marker)
+    clip.markers.extend(markers)
 
     # save the timeline as .otio file
     otio.adapters.write_to_file(timeline, otio_file)
@@ -174,8 +173,8 @@ def main():
         "youtubeVideoID",
         help="""The ID of the youtube video you would like to download.For
         example, in the following URL
-        (https://www.youtube.com/watch?v=es6LBWB_I4E),
-        the ID is es6LBWB_I4E.""",
+        (https://www.youtube.com/watch?v=es6LBWB_I4E)
+        ,the ID is es6LBWB_I4E.""",
     )
     parser.add_argument(
         "--skip-video-download",

@@ -61,11 +61,11 @@ def create_markers(chapters, fps):
 
         marker = otio.schema.Marker()
 
+        otio.opentime.from_seconds(seconds, fps)
+
         marker.marked_range = otio.opentime.TimeRange(
-            start_time=otio.opentime.RationalTime(seconds * fps, fps),
-            duration=otio.opentime.RationalTime(
-                0, fps
-            ),  # We are setting the duration of each marker to be 0 frames.
+            start_time=otio.opentime.from_seconds(seconds, fps),
+            duration=otio.opentime.from_seconds(0, fps),  # We are setting the duration of each marker to be 0 frames.
         )
 
         marker.color = otio.schema.MarkerColor.RED
@@ -110,8 +110,8 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
     totalFrames = dictMeta["duration"] * dictMeta["fps"]
 
     available_range = otio.opentime.TimeRange(
-        otio.opentime.RationalTime(0, dictMeta["fps"]),
-        otio.opentime.RationalTime(totalFrames, dictMeta["fps"]),
+        otio.opentime.from_seconds(0, dictMeta["fps"]),
+        otio.opentime.from_seconds(dictMeta["duration"], dictMeta["fps"])
     )
 
     # 4. Create a media_reference (contians the file path of the youtube video)

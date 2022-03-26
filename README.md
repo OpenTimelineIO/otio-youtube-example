@@ -32,5 +32,13 @@ This should create two files on your local computer: NtevTo96Wjc.description and
 python3 -m unittest test_youtube_chapters_demo.py
 
 
-
+## Linter
+Install [black](https://github.com/psf/black)
+```
+pip3 install black
+```
+Run the linter
+```
+black {source_file_or_directory}
+```
 [Session Notes](https://docs.google.com/document/d/1czIu3xKXr1FmEl88fZekUPy1aaqnHXF-8M3AwJ78BHs/edit) (A log of our programming sessions as we build this). 

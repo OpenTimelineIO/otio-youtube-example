@@ -43,14 +43,24 @@ def process_youtube_description(description_file):
 
 
 def convert_time_stamp_to_seconds(time_stamp):
-    if len(time_stamp) > 5:
-        date_time = datetime.datetime.strptime(time_stamp, "%H:%M:%S")
-    else:
-        date_time = datetime.datetime.strptime(time_stamp, "%M:%S")
+    time_split = time_stamp.split(":")
+    time_split.reverse()
+    hours = 0
+    minutes = 0
+    seconds = 0
 
-    a_timedelta = date_time - datetime.datetime(1900, 1, 1)
-    seconds = a_timedelta.total_seconds()
-    return seconds
+    if len(time_split) > 0:
+        seconds = time_split[0]
+    if len(time_split) > 1:
+        minutes = time_split[1]
+    if len(time_split) > 2:
+        hours = time_split[2]
+
+    timeDelta = datetime.timedelta(
+        hours=int(hours), minutes=int(minutes), seconds=int(seconds)
+    )
+
+    return timeDelta.total_seconds()
 
 
 def create_markers(chapters, fps):
@@ -65,7 +75,9 @@ def create_markers(chapters, fps):
 
         marker.marked_range = otio.opentime.TimeRange(
             start_time=otio.opentime.from_seconds(seconds, fps),
-            duration=otio.opentime.from_seconds(0, fps),  # We are setting the duration of each marker to be 0 frames.
+            duration=otio.opentime.from_seconds(
+                0, fps
+            ),  # We are setting the duration of each marker to be 0 frames.
         )
 
         marker.color = otio.schema.MarkerColor.RED
@@ -111,7 +123,7 @@ def create_timeline(dictMeta, video_file, description_file, otio_file):
 
     available_range = otio.opentime.TimeRange(
         otio.opentime.from_seconds(0, dictMeta["fps"]),
-        otio.opentime.from_seconds(dictMeta["duration"], dictMeta["fps"])
+        otio.opentime.from_seconds(dictMeta["duration"], dictMeta["fps"]),
     )
 
     # 4. Create a media_reference (contians the file path of the youtube video)

@@ -42,3 +42,24 @@ Run the linter
 black {source_file_or_directory}
 ```
 [Session Notes](https://docs.google.com/document/d/1czIu3xKXr1FmEl88fZekUPy1aaqnHXF-8M3AwJ78BHs/edit) (A log of our programming sessions as we build this). 
+
+## MkDocs
+Install [mkdocs](https://www.mkdocs.org/getting-started/)
+```
+pip3 install mkdocs
+```
+
+Run MkDoc Server
+```
+mkdocs serve
+```
+
+Build the site
+``` 
+mkdocs build
+```
+
+Deploy to Github Pages
+```
+mkdocs gh-deploy 
+```

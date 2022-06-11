@@ -1,17 +1,25 @@
-# Welcome to MkLorum
+# Welcome to OTIOExamples
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+The github repository is located [here](https://github.com/utsab/OTIOExamples).
 
-## Commands
+## Documentation layout
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+We will explain the OpenTimelineIO codebase in five levels of complexity: 
+* Level 1: The high level purpose of OTIO 
+* Level 2: OTIO is a file format, an API, and a collection of adaptors and plugins. 
+* Level 3: The technology stack of the OTIO codebase
+* Level 4: Important design patterns / architectural components 
+* Level 5: Walkthrough of the codebase 
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+
+## Level 1 
+
+
+OpentimeLineIO is a tool that helps to visualize the high-level structure of a media composition (such as an animated film or a movie with layers of visual effects).  
+
+The inputs to OTIO are the media files, such as the video, audio, and any other related content.  The inputs can also include "metadata" about the media, such as the positions of the cameras at different points of the video.   
+
+The output is an .otio file which represents a timeline. (TODO: finish writing about the outputs). 
+
+

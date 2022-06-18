@@ -20,6 +20,18 @@ OpentimeLineIO is a tool that helps to visualize the high-level structure of a m
 
 The inputs to OTIO are the media files, such as the video, audio, and any other related content.  The inputs can also include "metadata" about the media, such as the positions of the cameras at different points of the video.   
 
-The output is an .otio file which represents a timeline. (TODO: finish writing about the outputs). 
+The output is an .otio file which represents a timeline for the media composition.  All of the various inputs (video, audio, other metadata) are shown as layers on the timeline.  
+
+The OTIOExamples repository illustrates one concrete example of how we can use OTIO.  The example inputs the following into OTIO: 
+1. A Youtube video
+2. The Youtube description 
+
+![Inputs to OTIO](./img/inputs_visual.png?raw=true "Inputs to OTIO")
+
+
+
+
+
+
 
 

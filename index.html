@@ -75,13 +75,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#welcome-to-mklorum" class="nav-link">Welcome to MkLorum</a>
+            <li class="nav-item" data-level="1"><a href="#welcome-to-otioexamples" class="nav-link">Welcome to OTIOExamples</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#commands" class="nav-link">Commands</a>
+            <li class="nav-item" data-level="2"><a href="#documentation-layout" class="nav-link">Documentation layout</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#project-layout" class="nav-link">Project layout</a>
+            <li class="nav-item" data-level="2"><a href="#level-1" class="nav-link">Level 1</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -92,21 +92,23 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-mklorum">Welcome to MkLorum</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
-</ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre></div>
+<h1 id="welcome-to-otioexamples">Welcome to OTIOExamples</h1>
+<p>The github repository is located <a href="https://github.com/utsab/OTIOExamples">here</a>.</p>
+<h2 id="documentation-layout">Documentation layout</h2>
+<p>We will explain the OpenTimelineIO codebase in five levels of complexity: 
+* Level 1: The high level purpose of OTIO 
+* Level 2: OTIO is a file format, an API, and a collection of adaptors and plugins. 
+* Level 3: The technology stack of the OTIO codebase
+* Level 4: Important design patterns / architectural components 
+* Level 5: Walkthrough of the codebase </p>
+<h2 id="level-1">Level 1</h2>
+<p>OpentimeLineIO is a tool that helps to visualize the high-level structure of a media composition (such as an animated film or a movie with layers of visual effects).  </p>
+<p>The inputs to OTIO are the media files, such as the video, audio, and any other related content.  The inputs can also include "metadata" about the media, such as the positions of the cameras at different points of the video.   </p>
+<p>The output is an .otio file which represents a timeline for the media composition.  All of the various inputs (video, audio, other metadata) are shown as layers on the timeline.  </p>
+<p>The OTIOExamples repository illustrates one concrete example of how we can use OTIO.  The example inputs the following into OTIO: 
+1. A Youtube video
+2. The Youtube description </p>
+<p><img alt="Inputs to OTIO" src="img/inputs_visual.png?raw=true" title="Inputs to OTIO" /></p></div>
             </div>
         </div>
 
@@ -187,5 +189,5 @@ docs/
 
 <!--
 MkDocs version : 1.3.0
-Build Date UTC : 2022-06-04 20:50:44.841788+00:00
+Build Date UTC : 2022-06-18 22:05:01.336558+00:00
 -->

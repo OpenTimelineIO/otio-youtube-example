@@ -77,11 +77,7 @@
             
             <li class="nav-item" data-level="1"><a href="#welcome-to-otioexamples" class="nav-link">Welcome to OTIOExamples</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#documentation-layout" class="nav-link">Documentation layout</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#level-1" class="nav-link">Level 1</a>
+            <li class="nav-item" data-level="2"><a href="#high-level-purpose-of-opentimelineio" class="nav-link">High-level purpose of OpenTimelineIO</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -94,21 +90,31 @@
 
 <h1 id="welcome-to-otioexamples">Welcome to OTIOExamples</h1>
 <p>The github repository is located <a href="https://github.com/utsab/OTIOExamples">here</a>.</p>
-<h2 id="documentation-layout">Documentation layout</h2>
-<p>We will explain the OpenTimelineIO codebase in five levels of complexity: 
-* Level 1: The high level purpose of OTIO 
-* Level 2: OTIO is a file format, an API, and a collection of adaptors and plugins. 
-* Level 3: The technology stack of the OTIO codebase
-* Level 4: Important design patterns / architectural components 
-* Level 5: Walkthrough of the codebase </p>
-<h2 id="level-1">Level 1</h2>
-<p>OpentimeLineIO is a tool that helps to visualize the high-level structure of a media composition (such as an animated film or a movie with layers of visual effects).  </p>
+<h2 id="high-level-purpose-of-opentimelineio">High-level purpose of OpenTimelineIO</h2>
+<p>OpentimeLineIO (OTIO) is a tool that helps to visualize the high-level structure of a media composition (such as an animated film or a movie with layers of visual effects).  </p>
 <p>The inputs to OTIO are the media files, such as the video, audio, and any other related content.  The inputs can also include "metadata" about the media, such as the positions of the cameras at different points of the video.   </p>
 <p>The output is an .otio file which represents a timeline for the media composition.  All of the various inputs (video, audio, other metadata) are shown as layers on the timeline.  </p>
-<p>The OTIOExamples repository illustrates one concrete example of how we can use OTIO.  The example inputs the following into OTIO: 
-1. A Youtube video
-2. The Youtube description </p>
-<p><img alt="Inputs to OTIO" src="img/inputs_visual.png?raw=true" title="Inputs to OTIO" /></p></div>
+<p><img alt="High-level visual" src="img/high_level_visual.png?raw=true" title="High-level purpose of OTIO" /></p>
+<p>The OTIOExamples repository illustrates one concrete example of how we can use OTIO.  The example inputs the following files into OpenTimelineIO: </p>
+<ol>
+<li>A Youtube video</li>
+<li>The Youtube description </li>
+</ol>
+<p><img alt="Inputs to OTIO" src="img/inputs_visual.png?raw=true" title="Inputs to OTIO" /></p>
+<p>You can run the example yourself for a <a href="https://www.youtube.com/watch?v=RBSGKlAvoiM">specific Youtube video</a> by running a command such as the following: </p>
+<p><code>$ python3 youtube_chapters_demo.py RBSGKlAvoiM</code></p>
+<p>OpenTimeLineIO then generates the following .otio file: </p>
+<p><a href="examples/RBSGKlAvoiM.otio">RBSGKlAvoiM.otio</a></p>
+<p>We can use the otioview program to visualize the contents of the RBSGKlAvoiM.otio file. </p>
+<p><code>$ otioview RBSGKlAvoiM.otio</code></p>
+<p><img alt="otioview visual" src="img/otioview_visual.png?raw=true" title="otioview visual" /></p>
+<p>Note that list of chapter titles from the description of the original Youtube video are represented as the green markers in the timeline, while the video itself is represented as the blue rectangle behind the markers. </p>
+<p>==&gt; Talk about OTIOView (helps visualize the .otio file)</p>
+<p>==&gt; Show a screenshot of OTIOView displaying the Youtube demo timeline </p>
+<p>==&gt; Annotate the screenshot ==&gt; Show the relationship between the markers on the timeline and the chapter breakdown in the Youtube description.  </p>
+<p>==&gt; Explanation how this otio file is then used by editors to make a decision. “As an editor, I would look at XYZ part of the otio file and realize that EFG is off so I would make GHI recommendation to adjust XYZ.” </p>
+<p>TODO: Ask the OTIO maintainers for a realistic example that can complete the above scenario.</p>
+<p>For the Youtube Demo: “As the Youtube video creator, I can see how all the markers are spaced out, and I’m realizing that we could use another marker at the 4:31 timestamp in the video timeline”  </p></div>
             </div>
         </div>
 
@@ -189,5 +195,5 @@
 
 <!--
 MkDocs version : 1.3.0
-Build Date UTC : 2022-06-18 22:05:01.336558+00:00
+Build Date UTC : 2022-07-16 22:07:37.359796+00:00
 -->

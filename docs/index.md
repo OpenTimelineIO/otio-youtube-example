@@ -2,6 +2,12 @@
 
 The github repository is located [here](https://github.com/utsab/OTIOExamples).
 
+The goal of this documentation is to explain the basic OpenTimelineIO concepts using our Youtube Demo (contained in the OTIOExamples repository) as a concrete example.  We will walk through the following statement within the context of our Youtube Demo: 
+
+"OpenTimelineIO is a file format, an API, and a plugin system." 
+
+
+
 
 
 ## High-level purpose of OpenTimelineIO 
@@ -41,22 +47,18 @@ We can use the otioview program to visualize the contents of the RBSGKlAvoiM.oti
 ![otioview visual](./img/otioview_visual.png?raw=true "otioview visual")
 
 
-Note that list of chapter titles from the description of the original Youtube video are represented as the green markers in the timeline, while the video itself is represented as the blue rectangle behind the markers. 
+Note that the list of chapter titles from the description of the original Youtube video are represented as the green markers in the timeline, while the video itself is represented as the blue rectangle behind the markers. 
+
+![Annotated markers](./img/annotated_markers.png?raw=true "Annotated markers")
 
 
+Ultimately, the purpose of the final output (the .otio file) is to enable editors to make decisions.  For example, in our Youtube Demo, an editor can look at the timeline and visualize the layout of all the markers.  The editor might then realize, for example, "We could use another marker at the 4:31 timestamp." 
+
+A more realistic example of how editors might use the .otio file in the context of, say, an animated film could be somethign like the following: 
+
+“The helicopter explosion clip should be overlayed on the timeline a little bit earlier, at 42:30 instead of 42:31.” 
 
 
-==> Talk about OTIOView (helps visualize the .otio file)
-
-==> Show a screenshot of OTIOView displaying the Youtube demo timeline 
-
-==> Annotate the screenshot ==> Show the relationship between the markers on the timeline and the chapter breakdown in the Youtube description.  
-
-==> Explanation how this otio file is then used by editors to make a decision. “As an editor, I would look at XYZ part of the otio file and realize that EFG is off so I would make GHI recommendation to adjust XYZ.” 
-
-TODO: Ask the OTIO maintainers for a realistic example that can complete the above scenario.
-
-For the Youtube Demo: “As the Youtube video creator, I can see how all the markers are spaced out, and I’m realizing that we could use another marker at the 4:31 timestamp in the video timeline”  
 
 
 

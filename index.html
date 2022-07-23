@@ -90,6 +90,8 @@
 
 <h1 id="welcome-to-otioexamples">Welcome to OTIOExamples</h1>
 <p>The github repository is located <a href="https://github.com/utsab/OTIOExamples">here</a>.</p>
+<p>The goal of this documentation is to explain the basic OpenTimelineIO concepts using our Youtube Demo (contained in the OTIOExamples repository) as a concrete example.  We will walk through the following statement within the context of our Youtube Demo: </p>
+<p>"OpenTimelineIO is a file format, an API, and a plugin system." </p>
 <h2 id="high-level-purpose-of-opentimelineio">High-level purpose of OpenTimelineIO</h2>
 <p>OpentimeLineIO (OTIO) is a tool that helps to visualize the high-level structure of a media composition (such as an animated film or a movie with layers of visual effects).  </p>
 <p>The inputs to OTIO are the media files, such as the video, audio, and any other related content.  The inputs can also include "metadata" about the media, such as the positions of the cameras at different points of the video.   </p>
@@ -108,13 +110,11 @@
 <p>We can use the otioview program to visualize the contents of the RBSGKlAvoiM.otio file. </p>
 <p><code>$ otioview RBSGKlAvoiM.otio</code></p>
 <p><img alt="otioview visual" src="img/otioview_visual.png?raw=true" title="otioview visual" /></p>
-<p>Note that list of chapter titles from the description of the original Youtube video are represented as the green markers in the timeline, while the video itself is represented as the blue rectangle behind the markers. </p>
-<p>==&gt; Talk about OTIOView (helps visualize the .otio file)</p>
-<p>==&gt; Show a screenshot of OTIOView displaying the Youtube demo timeline </p>
-<p>==&gt; Annotate the screenshot ==&gt; Show the relationship between the markers on the timeline and the chapter breakdown in the Youtube description.  </p>
-<p>==&gt; Explanation how this otio file is then used by editors to make a decision. “As an editor, I would look at XYZ part of the otio file and realize that EFG is off so I would make GHI recommendation to adjust XYZ.” </p>
-<p>TODO: Ask the OTIO maintainers for a realistic example that can complete the above scenario.</p>
-<p>For the Youtube Demo: “As the Youtube video creator, I can see how all the markers are spaced out, and I’m realizing that we could use another marker at the 4:31 timestamp in the video timeline”  </p></div>
+<p>Note that the list of chapter titles from the description of the original Youtube video are represented as the green markers in the timeline, while the video itself is represented as the blue rectangle behind the markers. </p>
+<p><img alt="Annotated markers" src="img/annotated_markers.png?raw=true" title="Annotated markers" /></p>
+<p>Ultimately, the purpose of the final output (the .otio file) is to enable editors to make decisions.  For example, in our Youtube Demo, an editor can look at the timeline and visualize the layout of all the markers.  The editor might then realize, for example, "We could use another marker at the 4:31 timestamp." </p>
+<p>A more realistic example of how editors might use the .otio file in the context of, say, an animated film could be somethign like the following: </p>
+<p>“The helicopter explosion clip should be overlayed on the timeline a little bit earlier, at 42:30 instead of 42:31.” </p></div>
             </div>
         </div>
 
@@ -195,5 +195,5 @@
 
 <!--
 MkDocs version : 1.3.0
-Build Date UTC : 2022-07-16 22:07:37.359796+00:00
+Build Date UTC : 2022-07-23 22:01:23.490743+00:00
 -->

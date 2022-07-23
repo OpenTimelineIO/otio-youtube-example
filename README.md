@@ -71,3 +71,15 @@ Deploy to Github Pages
 ```
 mkdocs gh-deploy 
 ```
+
+
+## Contributions
+
+If you have any suggested changes to the OTIOExamples repository itself, 
+please provide them via [pull request](../../pulls) or [create an issue](../../issues) as appropriate. 
+
+All contributions back to the template repository must align with the contribution
+[guidelines](https://opentimelineio.readthedocs.io/en/latest/tutorials/contributing.html) 
+of the OpenTimelineIO project.
+
+

@@ -5,6 +5,10 @@
 
 This project serves as a working example to illustrate the key features of [OpenTimelineIO](https://github.com/AcademySoftwareFoundation/OpenTimelineIO) (maintained by the Academy Software Foundation).  The example will take in a youtube url as input.  The example will then download the youtube video and description onto the user's local computer and import the data into an OTIO Timeline.  The example will extract the "table of contents" data from the youtube description and import this information as "Markers" on the Timeline.  The final timeline is exported as a .otio file. 
 
+## Licensing
+
+This repository is licensed under the [Apache License, Version 2.0](LICENSE.md). 
+
 ## Documentation 
 
 The documentation can be found here: https://utsab.github.io/OTIOExamples/ 

@@ -57,7 +57,7 @@ black {source_file_or_directory}
 
 ## MkDocs
 
-The OTIOExamples project utilizes MkDocs to build the documentation as a user-friendly web application.  If you wish to update the documentation, you should follow these instructions to build the documentation web application locally.  
+The otio-youtube-example project utilizes MkDocs to build the documentation as a user-friendly web application.  If you wish to update the documentation, you should follow these instructions to build the documentation web application locally.  
 
 Install [mkdocs](https://www.mkdocs.org/getting-started/)
 ```

@@ -1,4 +1,4 @@
-# OTIOExamples
+# otio-youtube-example
 
 
 ## Overview
@@ -11,7 +11,7 @@ This repository is licensed under the [Apache License, Version 2.0](LICENSE.md).
 
 ## Documentation 
 
-The documentation can be found here: https://utsab.github.io/OTIOExamples/ 
+The documentation can be found here: https://utsab.github.io/otio-youtube-example/ 
 
 The documentation is intended to provide a detailed walkthrough of the basic OpenTimelineIO concepts within the context of a concrete example. 
 

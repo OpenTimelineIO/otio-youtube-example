@@ -1,8 +1,8 @@
-# Welcome to OTIOExamples
+# Welcome to otio-youtube-example
 
-The github repository is located [here](https://github.com/utsab/OTIOExamples).
+The github repository is located [here](https://github.com/utsab/otio-youtube-example).
 
-The goal of this documentation is to explain the basic OpenTimelineIO concepts using our Youtube Demo (contained in the OTIOExamples repository) as a concrete example.  We will walk through the following statement within the context of our Youtube Demo: 
+The goal of this documentation is to explain the basic OpenTimelineIO concepts using our Youtube Demo (contained in the otio-youtube-example repository) as a concrete example.  We will walk through the following statement within the context of our Youtube Demo: 
 
 "OpenTimelineIO is a file format, an API, and a plugin system." 
 
@@ -22,7 +22,7 @@ The output is an .otio file which represents a timeline for the media compositio
 ![High-level visual](./img/high_level_visual.png?raw=true "High-level purpose of OTIO")
 
 
-The OTIOExamples repository illustrates one concrete example of how we can use OTIO.  The example inputs the following files into OpenTimelineIO: 
+The otio-youtube-example repository illustrates one concrete example of how we can use OTIO.  The example inputs the following files into OpenTimelineIO: 
 
 1. A Youtube video
 2. The Youtube description 

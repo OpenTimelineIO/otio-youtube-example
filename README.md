@@ -69,7 +69,7 @@ Run MkDoc Server
 mkdocs serve
 ```
 
-After you test your documentation changes locally, you can push your changes to the official OTIOExamples documentation with the following instructions: 
+After you test your documentation changes locally, you can push your changes to the official otio-youtube-example documentation with the following instructions: 
 
 
 Build the site
@@ -85,7 +85,7 @@ mkdocs gh-deploy
 
 ## Contributions
 
-If you have any suggested changes to the OTIOExamples repository itself, 
+If you have any suggested changes to the otio-youtube-example repository itself, 
 please provide them via [pull request](../../pulls) or [create an issue](../../issues) as appropriate. 
 
 All contributions back to the template repository must align with the contribution

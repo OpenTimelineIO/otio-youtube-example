@@ -1,4 +1,4 @@
-# otio-youtube-examples
+# otio-youtube-example
 
 
 ## Overview
